@@ -12,6 +12,7 @@ cmake ${CMAKE_ARGS} -G Ninja \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_PROTOC=ON \
     -DCMAKE_PREFIX_PATH=$PREFIX \
+    -DPROTOBUF_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
     ..
 
 ninja -j${CPU_COUNT}
