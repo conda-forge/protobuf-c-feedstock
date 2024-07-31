@@ -1,0 +1,29 @@
+From 5b3e2ac7d27d2f3649f4dece862d9e7b6d2dcaee Mon Sep 17 00:00:00 2001
+From: Howard Butler <hobu.inc@gmail.com>
+Date: Wed, 31 Jul 2024 07:53:31 -0500
+Subject: [PATCH 2/2] support pointing to PROTOBUF_PROTOC_EXECUTABLE via
+ environment variable in CMAKE_CROSSCOMPILING scenarios
+
+---
+ build-cmake/CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/build-cmake/CMakeLists.txt b/build-cmake/CMakeLists.txt
+index ad1a03b..ab70e8a 100644
+--- a/build-cmake/CMakeLists.txt
++++ b/build-cmake/CMakeLists.txt
+@@ -19,6 +19,14 @@ find_package(Protobuf CONFIG)
+ if(Protobuf_FOUND)
+   # Keep compatibility with FindProtobuf CMake module
+   set(PROTOBUF_PROTOC_EXECUTABLE $<TARGET_FILE:protobuf::protoc>)
++
++  # In cross compiling scenarios, the location of the native dimbuilder executable
++  # can be provided to the CMake invocation (in cases not suitable for CMAKE_CROSSCOMPILING_EMULATOR).
++  set (PROTOBUF_PROTOC_EXECUTABLE $<TARGET_FILE:protobuf::protoc> CACHE STRING "path to protoc compiler")
++  IF (CMAKE_CROSSCOMPILING)
++      SET(PROTOBUF_PROTOC_EXECUTABLE "${PROTOBUF_PROTOC_EXECUTABLE}")
++  ENDIF (CMAKE_CROSSCOMPILING)
++
+   get_target_property(PROTOBUF_INCLUDE_DIR protobuf::libprotobuf INTERFACE_INCLUDE_DIRECTORIES)
+ else()
+   message(STATUS "Protobuf CMake config not found fallback to Cmake Module")
