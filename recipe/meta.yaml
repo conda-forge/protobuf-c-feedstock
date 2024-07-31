@@ -12,6 +12,9 @@ source:
     # Fix up CMake config https://github.com/protobuf-c/protobuf-c/pull/719
     - patches/0001-squash-clean-cmake.patch
 
+    # support pointing to PROTOBUF_PROTOC_EXECUTABLE via environment variable in CMAKE_CROSSCOMPILING scenarios
+    - patches/0002-support-pointing-to-PROTOBUF_PROTOC_EXECUTABLE-via-e.patch
+
 build:
   number: 2
 
