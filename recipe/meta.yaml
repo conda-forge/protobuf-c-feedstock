@@ -16,7 +16,7 @@ source:
     - patches/0002-support-pointing-to-PROTOBUF_PROTOC_EXECUTABLE-via-e.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
