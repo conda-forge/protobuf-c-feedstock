@@ -8,12 +8,6 @@ package:
 source:
   url: https://github.com/protobuf-c/protobuf-c/archive/refs/tags/v{{ version }}.tar.gz
   sha256: f3046f94ef6f85cf4311f6c4c51e2095c381ce7bb7fd4f90ea8d9cd99fca3c04
-  patches:
-    # Fix up CMake config https://github.com/protobuf-c/protobuf-c/pull/719
-    - patches/0001-squash-clean-cmake.patch
-
-    # support pointing to PROTOBUF_PROTOC_EXECUTABLE via environment variable in CMAKE_CROSSCOMPILING scenarios
-    - patches/0002-support-pointing-to-PROTOBUF_PROTOC_EXECUTABLE-via-e.patch
 
 build:
   number: 0
