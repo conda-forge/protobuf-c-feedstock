@@ -1,5 +1,5 @@
 {% set name = "protobuf-c" %}
-{% set version = "1.5.1" %}
+{% set version = "1.5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/protobuf-c/protobuf-c/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f3046f94ef6f85cf4311f6c4c51e2095c381ce7bb7fd4f90ea8d9cd99fca3c04
+  sha256: cea46eeaa19c52924938b582c5d128a6ed3b6fb5b3f4677476a1781cc06e03f3
   patches:
     # support pointing to PROTOBUF_PROTOC_EXECUTABLE via environment variable in CMAKE_CROSSCOMPILING scenarios
     - patches/0002-support-pointing-to-PROTOBUF_PROTOC_EXECUTABLE-via-e.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
